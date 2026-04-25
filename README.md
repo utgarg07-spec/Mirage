@@ -45,8 +45,10 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │                    ATTACKER'S VIEW                          │
 │              "I just breached a real bank server"           │
 └─────────────────────────┬───────────────────────────────────┘
+
 │ SSH on port 2222
 ▼
+
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 1 — DECEPTION ENGINE                     │
 │                                                             │
@@ -56,8 +58,10 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │  Fake Environment: transactions_2026.csv, payment APIs,    │
 │  customer PII backups, SSH keys, financial logs            │
 └─────────────────────────┬───────────────────────────────────┘
+
 │
 ▼
+
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 2 — INTELLIGENCE ENGINE                  │
 │                                                             │
@@ -69,8 +73,10 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │          Privilege Escalation → Collection →               │
 │          Exfiltration → Impact                             │
 └─────────────────────────┬───────────────────────────────────┘
+
 │
 ▼
+
 ┌─────────────────────────────────────────────────────────────┐
 │           LAYER 3 — BLOCKCHAIN IMMUNITY LAYER               │
 │                                                             │
@@ -79,8 +85,10 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │  keccak256 Behavioral Fingerprinting                       │
 │  Cross-node Alert Broadcasting                             │
 └─────────────────────────┬───────────────────────────────────┘
+
 │
 ▼
+
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 4 — COMMAND CENTER                       │
 │                                                             │
@@ -126,16 +134,27 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 ## 🛠️ Tech Stack
 
 | Layer | Technology | Purpose |
+
 |---|---|---|
+
 | SSH Honeypot | Python + Paramiko | Fake SSH server |
+
 | Command Cache | Trie Data Structure | Instant 0ms responses |
+
 | AI Responses | Groq API (Llama 3.3 70B) | Unknown command handling |
+
 | Attack Prediction | Markov Chain + MITRE ATT&CK | Stage detection & prediction |
+
 | Honey Files | Groq LLM Generation | Dynamic fake sensitive files |
+
 | Session Storage | SQLite | Full attack session logging |
+
 | Blockchain | Hardhat + Solidity + Web3.py | Immutable threat registry |
+
 | Backend API | FastAPI + WebSockets | Real-time event streaming |
+
 | Frontend | React + Tailwind CSS | Command center dashboard |
+
 | Routing | React Router | Node 1 / Node 2 views |
 
 ---
