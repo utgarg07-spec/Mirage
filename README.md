@@ -40,24 +40,24 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 1 — DECEPTION ENGINE                     │
 │                                                             │
-│  Paramiko SSH Server → Trie Command Cache (0ms response)   │
-│                      → Groq LLM API (<300ms for unknown)   │
+│  Paramiko SSH Server → Trie Command Cache (0ms response)    │
+│                      → Groq LLM API (<300ms for unknown)    │
 │                                                             │
-│  Fake Environment: transactions_2026.csv, payment APIs,    │
-│  customer PII backups, SSH keys, financial logs            │
+│  Fake Environment: transactions_2026.csv, payment APIs,     │
+│  customer PII backups, SSH keys, financial logs             │
 └─────────────────────────┬───────────────────────────────────┘
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 2 — INTELLIGENCE ENGINE                  │
 │                                                             │
-│  MITRE ATT&CK Markov Chain → Stage Detection               │
-│  Groq LLM → Dynamic Honey File Generation                  │
-│  Behavioral Profiling → Skill Classification (1/2/3)       │
+│  MITRE ATT&CK Markov Chain → Stage Detection                │
+│  Groq LLM → Dynamic Honey File Generation                   │
+│  Behavioral Profiling → Skill Classification (1/2/3)        │
 │                                                             │
-│  Stages: Recon → Initial Access → Execution →              │
-│          Privilege Escalation → Collection →               │
-│          Exfiltration → Impact                             │
+│  Stages: Recon → Initial Access → Execution →               │
+│          Privilege Escalation → Collection →                │
+│          Exfiltration → Impact                              │
 └─────────────────────────┬───────────────────────────────────┘
                           │
                           ▼
@@ -65,19 +65,19 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │           LAYER 3 — BLOCKCHAIN IMMUNITY LAYER               │
 │                                                             │
 │  Hardhat Ethereum Testnet                                   │
-│  MirageRegistry.sol Smart Contract                         │
-│  keccak256 Behavioral Fingerprinting                       │
-│  Cross-node Alert Broadcasting                             │
+│  MirageRegistry.sol Smart Contract                          │
+│  keccak256 Behavioral Fingerprinting                        │
+│  Cross-node Alert Broadcasting                              │
 └─────────────────────────┬───────────────────────────────────┘
                           │
                           ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 4 — COMMAND CENTER                       │
 │                                                             │
-│  React Dashboard (Node 1) — Live attack monitoring         │
-│  Node 2 View — Real-time immunity broadcasting demo        │
-│  FastAPI Backend — REST + WebSocket                        │
-│  AI Forensic Report Generator                              │
+│  React Dashboard (Node 1) — Live attack monitoring          │
+│  Node 2 View — Real-time immunity broadcasting demo         │
+│  FastAPI Backend — REST + WebSocket                         │
+│  AI Forensic Report Generator                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
