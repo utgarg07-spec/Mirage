@@ -3,23 +3,15 @@
 
 > *"To the attacker, it's real. To us, it's a trap. To the network — it's a vaccine."*
 
-MIRAGE is an AI-powered cybersecurity honeypot system that lures attackers into a 
-fake FinTech payment server, studies their behavior in real time, predicts their 
-next move using the MITRE ATT&CK framework, and permanently records their 
-behavioral fingerprint on an Ethereum blockchain — automatically immunizing 
-connected nodes against future attacks.
+MIRAGE is an AI-powered cybersecurity honeypot system that lures attackers into a fake FinTech payment server, studies their behavior in real time, predicts their next move using the MITRE ATT&CK framework, and permanently records their behavioral fingerprint on an Ethereum blockchain — automatically immunizing connected nodes against future attacks.
 
-Built in 48 hours at Kraken'X 2026 Hackathon by a team with zero prior 
-cybersecurity experience.
+Built in 48 hours at Kraken'X 2026 Hackathon by a team with zero prior cybersecurity experience.
 
 ---
 
 ## 🎯 The Problem
 
-Traditional cybersecurity is reactive — systems wait to be attacked, then try 
-to block. Once an attacker is inside, the average time before detection is 
-**277 days**. Existing tools detect known threats — zero-day and novel attacks 
-bypass them entirely.
+Traditional cybersecurity is reactive — systems wait to be attacked, then try to block. Once an attacker is inside, the average time before detection is **277 days**. Existing tools detect known threats — zero-day and novel attacks bypass them entirely.
 
 **The core flaw: defenders are always one step behind.**
 
@@ -29,26 +21,22 @@ bypass them entirely.
 
 MIRAGE flips the model. Instead of blocking attackers, we:
 
-1. **Deceive** — Lure them into a hyper-realistic fake FinTech server they 
-   cannot distinguish from reality
-2. **Predict** — Use AI and MITRE ATT&CK patterns to anticipate their next 
-   move before they make it
-3. **Immunize** — Broadcast attacker fingerprints via blockchain smart contracts 
-   to protect all connected nodes instantly
-4. **Report** — Auto-generate forensic intelligence briefs that turn raw attack 
-   data into actionable security insights
+1. **Deceive** — Lure them into a hyper-realistic fake FinTech server they cannot distinguish from reality
+2. **Predict** — Use AI and MITRE ATT&CK patterns to anticipate their next move before they make it
+3. **Immunize** — Broadcast attacker fingerprints via blockchain smart contracts to protect all connected nodes instantly
+4. **Report** — Auto-generate forensic intelligence briefs that turn raw attack data into actionable security insights
 
 ---
 
 ## 🏗️ Architecture
+
+```
 ┌─────────────────────────────────────────────────────────────┐
 │                    ATTACKER'S VIEW                          │
 │              "I just breached a real bank server"           │
 └─────────────────────────┬───────────────────────────────────┘
-
-│ SSH on port 2222
-▼
-
+                          │ SSH on port 2222
+                          ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 1 — DECEPTION ENGINE                     │
 │                                                             │
@@ -58,10 +46,8 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │  Fake Environment: transactions_2026.csv, payment APIs,    │
 │  customer PII backups, SSH keys, financial logs            │
 └─────────────────────────┬───────────────────────────────────┘
-
-│
-▼
-
+                          │
+                          ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 2 — INTELLIGENCE ENGINE                  │
 │                                                             │
@@ -73,10 +59,8 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │          Privilege Escalation → Collection →               │
 │          Exfiltration → Impact                             │
 └─────────────────────────┬───────────────────────────────────┘
-
-│
-▼
-
+                          │
+                          ▼
 ┌─────────────────────────────────────────────────────────────┐
 │           LAYER 3 — BLOCKCHAIN IMMUNITY LAYER               │
 │                                                             │
@@ -85,10 +69,8 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │  keccak256 Behavioral Fingerprinting                       │
 │  Cross-node Alert Broadcasting                             │
 └─────────────────────────┬───────────────────────────────────┘
-
-│
-▼
-
+                          │
+                          ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              LAYER 4 — COMMAND CENTER                       │
 │                                                             │
@@ -97,6 +79,7 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 │  FastAPI Backend — REST + WebSocket                        │
 │  AI Forensic Report Generator                              │
 └─────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -106,8 +89,7 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 - Fake Ubuntu 22.04 SSH server (`fintech-prod-01`) that accepts any credentials
 - Instant responses to 20+ common Linux commands via Trie data structure
 - Groq LLM (Llama 3.3 70B) handles unknown commands in under 300ms
-- Convincing fake FinTech environment — transaction logs, payment APIs, 
-  customer data, SWIFT codes
+- Convincing fake FinTech environment — transaction logs, payment APIs, customer data, SWIFT codes
 
 ### 🧠 Attack Prediction
 - MITRE ATT&CK framework Markov Chain with 7 attack stages
@@ -123,7 +105,7 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 
 ### 📊 Live Command Center
 - Real-time SOC-style dashboard showing live attack sessions
-- Terminal panel displaying attacker commands as they're typed
+- Terminal panel displaying attacker commands as they are typed
 - MITRE ATT&CK stage visualization with confidence bars
 - Blockchain ledger feed with transaction hashes
 - Node 2 immunity view with animated status transitions
@@ -134,67 +116,59 @@ MIRAGE flips the model. Instead of blocking attackers, we:
 ## 🛠️ Tech Stack
 
 | Layer | Technology | Purpose |
-
 |---|---|---|
-
 | SSH Honeypot | Python + Paramiko | Fake SSH server |
-
 | Command Cache | Trie Data Structure | Instant 0ms responses |
-
 | AI Responses | Groq API (Llama 3.3 70B) | Unknown command handling |
-
-| Attack Prediction | Markov Chain + MITRE ATT&CK | Stage detection & prediction |
-
+| Attack Prediction | Markov Chain + MITRE ATT&CK | Stage detection and prediction |
 | Honey Files | Groq LLM Generation | Dynamic fake sensitive files |
-
 | Session Storage | SQLite | Full attack session logging |
-
 | Blockchain | Hardhat + Solidity + Web3.py | Immutable threat registry |
-
 | Backend API | FastAPI + WebSockets | Real-time event streaming |
-
 | Frontend | React + Tailwind CSS | Command center dashboard |
-
-| Routing | React Router | Node 1 / Node 2 views |
+| Routing | React Router | Node 1 and Node 2 views |
 
 ---
 
 ## 📁 Project Structure
+
+```
 Mirage/
 ├── backend/
 │   ├── honeypot/
-│   │   ├── server.py          # Paramiko SSH honeypot server
-│   │   ├── commands.py        # Trie-based command engine
-│   │   ├── session_logger.py  # SQLite session logging
-│   │   ├── fake_filesystem.py # Fake FinTech file contents
-│   │   └── mirage.db          # Session database
+│   │   ├── server.py              # Paramiko SSH honeypot server
+│   │   ├── commands.py            # Trie-based command engine
+│   │   ├── session_logger.py      # SQLite session logging
+│   │   ├── fake_filesystem.py     # Fake FinTech file contents
+│   │   └── mirage.db              # Session database
 │   ├── intelligence/
-│   │   ├── groq_handler.py         # Groq LLM integration
-│   │   ├── mitre_predictor.py      # MITRE ATT&CK Markov chain
-│   │   └── honey_file_generator.py # Dynamic honey file creation
+│   │   ├── groq_handler.py        # Groq LLM integration
+│   │   ├── mitre_predictor.py     # MITRE ATT&CK Markov chain
+│   │   └── honey_file_generator.py# Dynamic honey file creation
 │   ├── blockchain/
-│   │   ├── web3_handler.py         # Ethereum interaction layer
+│   │   ├── web3_handler.py        # Ethereum interaction layer
 │   │   └── fingerprint_generator.py# Behavioral hash generation
 │   ├── api/
-│   │   ├── main.py                 # FastAPI app + endpoints
-│   │   ├── websocket_manager.py    # WebSocket connection manager
+│   │   ├── main.py                # FastAPI app + endpoints
+│   │   ├── websocket_manager.py   # WebSocket connection manager
 │   │   └── event_broadcaster.py   # Thread-safe event bridge
-│   └── .env                        # API keys (not committed)
+│   └── .env                       # API keys (not committed)
 ├── contracts/
 │   ├── contracts/
-│   │   └── MirageRegistry.sol      # Threat registry smart contract
+│   │   └── MirageRegistry.sol     # Threat registry smart contract
 │   ├── scripts/
-│   │   └── deploy.js               # Contract deployment script
+│   │   └── deploy.js              # Contract deployment script
 │   └── hardhat.config.js
 └── frontend/
-└── dashboard/
-└── src/
-├── hooks/
-│   └── useWebSocket.js  # Real-time state management
-├── components/          # UI components
-└── pages/
-├── NodeOne.jsx      # Main command center
-└── NodeTwo.jsx      # Network immunity view
+    └── dashboard/
+        └── src/
+            ├── hooks/
+            │   └── useWebSocket.js # Real-time state management
+            ├── components/         # UI components
+            └── pages/
+                ├── NodeOne.jsx     # Main command center
+                └── NodeTwo.jsx     # Network immunity view
+```
 
 ---
 
@@ -206,29 +180,38 @@ Mirage/
 - Git
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/MIRAGE.git
 cd MIRAGE
 ```
 
 ### 2. Set up Python environment
+
 ```bash
 cd backend
 pip install paramiko groq python-dotenv web3 fastapi uvicorn websockets
 ```
 
 ### 3. Create environment file
+
 Create `backend/.env`:
+
+```
 GROQ_API_KEY=your_groq_api_key_here
+```
+
 Get a free Groq API key at [console.groq.com](https://console.groq.com)
 
 ### 4. Set up blockchain
+
 ```bash
 cd contracts
 npm install
 ```
 
 ### 5. Set up frontend
+
 ```bash
 cd frontend/dashboard
 npm install
@@ -241,33 +224,41 @@ npm install
 Open 4 terminals and run in order:
 
 **Terminal 1 — Blockchain Node**
+
 ```bash
 cd contracts
 npx hardhat node
 ```
+
 Wait for: `Started HTTP and WebSocket JSON-RPC server at http://127.0.0.1:8545`
 
 **Terminal 2 — Deploy Smart Contract**
+
 ```bash
 cd contracts
 npx hardhat run scripts/deploy.js --network localhost
 ```
+
 Wait for: `MirageRegistry deployed to: 0x...`
 
 **Terminal 3 — Backend API + Honeypot**
+
 ```bash
 cd /path/to/Mirage
 uvicorn backend.api.main:app --host 0.0.0.0 --port 8000
 ```
+
 Wait for: `[MIRAGE] SSH honeypot listening on 0.0.0.0:2222`
 
 **Terminal 4 — Frontend Dashboard**
+
 ```bash
 cd frontend/dashboard
 npm run dev
 ```
 
 ### Access the system
+
 - **Node 1 Command Center:** http://localhost:5173
 - **Node 2 Immunity View:** http://localhost:5173/node2
 - **API Documentation:** http://localhost:8000/docs
@@ -349,17 +340,10 @@ Events emitted:
 ## ⚠️ Known Issues
 
 **Real-time dashboard updates:**
-WebSocket event broadcasting from the synchronous Paramiko SSH thread 
-to the async FastAPI event loop has a thread-synchronization issue. 
-Sessions log correctly to SQLite and appear on dashboard refresh. 
-The `asyncio.run_coroutine_threadsafe()` bridge is implemented but 
-the broadcaster import chain from `honeypot/server.py` → 
-`api/event_broadcaster.py` fails silently in some environments. 
-Fix in progress.
+WebSocket event broadcasting from the synchronous Paramiko SSH thread to the async FastAPI event loop has a thread-synchronization issue. Sessions log correctly to SQLite and appear on dashboard refresh. The `asyncio.run_coroutine_threadsafe()` bridge is implemented but the import chain from `honeypot/server.py` to `api/event_broadcaster.py` fails in some environments. Fix in progress.
 
 **SSH host key warning:**
-The honeypot generates a new RSA key on every restart. Run 
-`ssh-keygen -R "[localhost]:2222"` before each demo session.
+The honeypot generates a new RSA key on every restart. Run `ssh-keygen -R "[localhost]:2222"` before each demo session.
 
 ---
 
@@ -368,7 +352,7 @@ The honeypot generates a new RSA key on every restart. Run
 **Short term**
 - Fix real-time WebSocket broadcasting
 - Deploy honeypot to real internet-facing server to capture actual attackers
-- Add email/SMS alerts when high-skill attacker detected
+- Add email and SMS alerts when high-skill attacker detected
 
 **Medium term**
 - Federated threat network — multiple organizations share one blockchain ledger
@@ -382,27 +366,19 @@ The honeypot generates a new RSA key on every restart. Run
 
 ---
 
-## 🧠 Key Concepts
+## 🧠 Why These Technology Choices
 
 **Why a Trie for command lookup?**
-O(m) lookup time where m is command length — 2 operations for `ls`, 
-6 for `whoami`. A real Linux server responds in under 5ms. 
-The Trie keeps us believable.
+O(m) lookup time where m is command length — 2 operations for `ls`, 6 for `whoami`. A real Linux server responds in under 5ms. The Trie keeps us believable.
 
 **Why Groq and not OpenAI?**
-Groq's LPU hardware gives sub-300ms inference. OpenAI takes 2-5 seconds. 
-A 3-second delay on `ls` would immediately expose the honeypot.
+Groq's LPU hardware gives sub-300ms inference. OpenAI takes 2-5 seconds. A 3-second delay on `ls` would immediately expose the honeypot.
 
 **Why blockchain and not a database?**
-A database has an admin who can delete records. A blockchain has no admin. 
-Multiple competing organizations can share threat intelligence on neutral 
-ground — no single party controls it, all parties can verify it.
+A database has an admin who can delete records. A blockchain has no admin. Multiple competing organizations can share threat intelligence on neutral ground — no single party controls it, all parties can verify it.
 
 **Why Markov Chain and not ML?**
-No training data available. Markov Chains encode expert knowledge 
-directly (MITRE ATT&CK framework) without requiring thousands of 
-labeled attack sessions. Interpretable, fast, and provably correct 
-for this use case.
+No training data available. Markov Chains encode expert knowledge directly from the MITRE ATT&CK framework without requiring thousands of labeled attack sessions. Interpretable, fast, and correct for this use case.
 
 ---
 
